@@ -2,8 +2,16 @@
 
 {
   # EFI / systemd boot
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    
+    extraModulePackages = with config.boot.kernelPackages; [ mba6x_bl ];
+    kernelModules = [ "mba6x_bl" ];
+
+    # Divides power consumption by two.
+    kernelParams = [ "acpi_osi=" ];
+  };
 
   # Audio output
   hardware.pulseaudio={
@@ -16,14 +24,6 @@
     naturalScrolling = true;
     disableWhileTyping = true;
   };
-
-  boot = {
-   extraModulePackages = with config.boot.kernelPackages; [ mba6x_bl ];
-   kernelModules = [ "mba6x_bl" ];
-
-   # Divides power consumption by two.
-   kernelParams = [ "acpi_osi=" ];
- };
 
  services.xserver.deviceSection = lib.mkDefault ''
   Option "Backlight" "mba6x_backlight"
