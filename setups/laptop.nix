@@ -12,4 +12,5 @@
 
   # Touchpad
   services.xserver.libinput.enable = true;
+  services.xserver.libinput.naturalScrolling = true;
 }
