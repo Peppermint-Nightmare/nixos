@@ -9,4 +9,7 @@
   hardware.pulseaudio={
     enable = true;
   };
+
+  # Touchpad
+  services.xserver.libinput.enable = true;
 }

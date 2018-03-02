@@ -9,7 +9,7 @@
       ./setups/laptop.nix
       ./system/common.nix
       ./system/users.nix
-      ./software/fonts
+      ./software/fonts.nix
       ./software/packages.nix
       ./software/devPackages.nix
       ./networking/ssh.nix
