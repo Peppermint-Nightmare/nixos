@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # EFI / systemd boot
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    
+
     extraModulePackages = with config.boot.kernelPackages; [ mba6x_bl ];
     kernelModules = [ "mba6x_bl" ];
 
